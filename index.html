@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapider Hotel Revenue &amp; Yield Management</title>
+  <script src="https://kit.fontawesome.com/5b23df26dc.js" crossorigin="anonymous" defer></script>
+  <script src="/assets/js/rapider-components.js" defer></script>
+  <link rel="stylesheet" href="/assets/themes/rapider-tailwind-theme.css">
+  <link rel="stylesheet" href="/assets/themes/crm-expenses-design.css">
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+    iframe#appFrame { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+  <iframe id="appFrame" src="pages/dashboard/dashboard.html"></iframe>
+  <script>
+    const routes = {
+  "dashboard": "pages/dashboard/dashboard.html",
+  "pickup-forecast": "pages/pickup-forecast/pickup-forecast.html",
+  "compset-parity": "pages/compset-parity/compset-parity.html",
+  "recommendations-queue": "pages/recommendations-queue/recommendations-queue.html",
+  "rate-calendar": "pages/rate-calendar/rate-calendar.html",
+  "group-displacement": "pages/group-displacement/group-displacement.html",
+  "rate-strategies": "pages/rate-strategies/rate-strategies.html",
+  "events-signals": "pages/events-signals/events-signals.html",
+  "budget-attribution": "pages/budget-attribution/budget-attribution.html",
+  "stay-date-detail": "pages/stay-date-detail/stay-date-detail.html",
+  "displacement-detail": "pages/displacement-detail/displacement-detail.html",
+  "rate-override-drawer": "pages/rate-override-drawer/rate-override-drawer.html",
+  "displacement-drawer": "pages/displacement-drawer/displacement-drawer.html"
+};
+    function handleHash() {
+      const hash = window.location.hash.replace(/^#\/?/, '').split('?')[0];
+      const route = hash || 'dashboard';
+      const target = routes[route] || routes['dashboard'];
+      const iframe = document.getElementById('appFrame');
+      if (iframe) iframe.src = target;
+    }
+    window.addEventListener('hashchange', handleHash);
+    window.addEventListener('load', handleHash);
+  </script>
+</body>
+</html>
